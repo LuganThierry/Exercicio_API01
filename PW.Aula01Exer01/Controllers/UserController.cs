@@ -13,6 +13,7 @@ namespace PW.Aula01Exer01.Controllers
             new Cliente("Pedro", "333333", Convert.ToDateTime("1993/03/03")),
             new Cliente("Clara", "444444", Convert.ToDateTime("1994/04/04")),
             new Cliente("José", "555555", Convert.ToDateTime("1995/05/05")),
+            new Cliente("Ieda", "666666", Convert.ToDateTime("1996/06/06")),
         };
 
         [HttpPost("Criar/{nome}")]
