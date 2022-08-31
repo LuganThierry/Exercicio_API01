@@ -35,6 +35,18 @@ namespace PW.Aula01Exer01.Controllers
             
         }
 
+
+        [HttpGet("SelecionarporCPF/{CPF}")]
+        public IActionResult SelecionarporCPF(string _Cpf)
+        {
+            var selecionarUsuario = Clientes.Find(x => x.Cpf == _Cpf);
+
+            if (selecionarUsuario == null)
+                return NotFound();
+            return Ok(selecionarUsuario);
+
+        }
+
         [HttpPut("Atualizar/{nome}")]
         public IActionResult Atualizar(string _nome, Cliente clienteAtual)
         {
