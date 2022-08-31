@@ -1,9 +1,12 @@
-﻿namespace PW.Aula01Exer01
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PW.Aula01Exer01
 {
     public class Cliente
     {
         public string Nome { get; set; }
 
+        [StringLength(11, ErrorMessage = "CPF deve ter 11 dígitos")]
         public string Cpf { get; set; }
 
         public DateTime DataNasc { get; set; }

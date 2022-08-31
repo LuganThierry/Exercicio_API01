@@ -8,13 +8,20 @@ namespace PW.Aula01Exer01.Controllers
     {
         public static List<Cliente> Clientes = new List<Cliente>()
         {
-            new Cliente("João", "111111", Convert.ToDateTime("1991/01/01")),
-            new Cliente("Maria", "222222", Convert.ToDateTime("1992/02/02")),
-            new Cliente("Pedro", "333333", Convert.ToDateTime("1993/03/03")),
-            new Cliente("Clara", "444444", Convert.ToDateTime("1994/04/04")),
-            new Cliente("José", "555555", Convert.ToDateTime("1995/05/05")),
-            new Cliente("Ieda", "666666", Convert.ToDateTime("1996/06/06")),
+            new Cliente("João", "11111111111", Convert.ToDateTime("1991/01/01")),
+            new Cliente("Maria", "22222222222", Convert.ToDateTime("1992/02/02")),
+            new Cliente("Pedro", "3333333333", Convert.ToDateTime("1993/03/03")),
+            new Cliente("Clara", "4444444444", Convert.ToDateTime("1994/04/04")),
+            new Cliente("José", "55555555555", Convert.ToDateTime("1995/05/05")),
+            new Cliente("Ieda", "66666666666", Convert.ToDateTime("1996/06/06")),
         };
+
+        private readonly IConfiguration _configuration;
+
+        public UserController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [HttpPost("Criar/{nome}")]
         public IActionResult Criar(Cliente novocliente)
