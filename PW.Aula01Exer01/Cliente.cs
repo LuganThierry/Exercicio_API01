@@ -6,11 +6,15 @@ namespace PW.Aula01Exer01
     {
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Nome é uma informação obrigatória")]
         public string Nome { get; set; }
 
+
+        [Required(ErrorMessage = "CPF é uma informação obrigatória")]
         [StringLength(11, ErrorMessage = "CPF deve ter 11 dígitos")]
         public string Cpf { get; set; }
 
+        [Required(ErrorMessage = "Data de nascimento é uma informação obrigatória")]
         public DateTime DataNasc { get; set; }
 
         public int Idade { get; set; }
