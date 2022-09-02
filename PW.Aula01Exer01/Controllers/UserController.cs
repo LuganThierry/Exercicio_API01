@@ -33,9 +33,9 @@ namespace PW.Aula01Exer01.Controllers
             return Ok (novocliente);
         }
 
-        [HttpGet("Selecionar/{nome}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<List<Cliente>> Selecionar()
+        public ActionResult<List<Cliente>> Select()
         {
             var clienteRespository = new ClienteRepository(_configuration);
 
@@ -45,6 +45,18 @@ namespace PW.Aula01Exer01.Controllers
                 return NotFound();
             return Ok(clientes);
             
+        }
+
+        [HttpGet("Selecionar/{nome}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<Cliente>> Selecionar(string _nome)
+        {
+            var selecionarUsuario = Clientes.Find(x => x.Nome == _nome);
+
+            if (selecionarUsuario == null)
+                return NotFound();
+            return Ok(selecionarUsuario);
+
         }
 
 

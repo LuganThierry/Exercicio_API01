@@ -16,9 +16,7 @@ namespace PW.Aula01Exer01.Repository
         {
             var query = "SELECT * FROM Cliente";
 
-            var connectionString = _configuration.GetConnectionString("DefaultConnection");
-
-            using var conn = new SqlConnection(connectionString);
+            using var conn = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
 
             return conn.Query<Cliente>(query).ToList();
         }
