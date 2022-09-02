@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PW.Aula01Exer01.Repository;
 
 namespace PW.Aula01Exer01.Controllers
 {
@@ -20,6 +21,7 @@ namespace PW.Aula01Exer01.Controllers
 
         public UserController(IConfiguration configuration)
         {
+            Clientes = new List<Cliente>();
             _configuration = configuration;
         }
 
@@ -32,13 +34,16 @@ namespace PW.Aula01Exer01.Controllers
         }
 
         [HttpGet("Selecionar/{nome}")]
-        public IActionResult Selecionar(string _nome)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<Cliente>> Selecionar()
         {
-            var selecionarUsuario = Clientes.Find(x => x.Nome == _nome);
+            var clienteRespository = new ClienteRepository(_configuration);
 
-            if (selecionarUsuario == null)
+            var clientes = clienteRespository.GetClientes();
+
+            if (clientes == null)
                 return NotFound();
-            return Ok(selecionarUsuario);
+            return Ok(clientes);
             
         }
 
